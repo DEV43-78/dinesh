@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🎥 Watch Video | TeraboxLinke</title>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7GTWPCBPQX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HXLDQH393Z');
+</script>
+  
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      background: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      cursor: pointer;
+    }
+    nav {
+      background: #007bff;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .player-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 10px;
+    }
+    .player-box {
+      width: 300px;
+      height: 200px;
+      border-radius: 15px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 0 20px rgba(0,123,255,0.5);
+      border: 2px solid rgba(0,123,255,0.7);
+      background: #000;
+    }
+    .player-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: blur(8px);
+      transform: scale(1.1);
+    }
+    .overlay-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    footer {
+      margin-top: auto;
+      text-align: center;
+      padding: 10px;
+      font-size: 12px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">TeraboxLinke</div>
+    <div class="short-link" id="shortLinkDisplay"></div>
+  </nav>
+
+  <!-- Player UI -->
+  <div class="player-container">
+    <div class="player-box" id="playerBox">
+      <img src="img/a1.jpg" alt="Video Thumbnail" />
+      <div class="overlay-text">▶️ View in App</div>
+    </div>
+  </div>
+
+
+   </div>
+  <p style="text-align:center; font-size: 14px; color: #666; margin-top: -20px;">
+⚠️ Ad may appear on first click. Video will open on second click.
+    पहले Click पर Ad है और दूसरे Click पर वीडियो मिलेगा ⚠️
+</p>
+
+  
+  <!-- Footer -->
+  <footer>
+    © 2025 TeraboxLinke | <a href="#" style="color:#007bff;text-decoration:none;">Privacy Policy</a>
+  </footer>
+
+  <!-- Firebase Auth Check & Security -->
+  <script>
+    const firebaseConfig = {
+         apiKey: "AIzaSyCSPNBeymwFh_r1pozKcsqAZgtrkRBQGzg",
+         authDomain: "mix-setup.firebaseapp.com",
+         projectId: "mix-setup",
+         storageBucket: "mix-setup.firebasestorage.app",
+         messagingSenderId: "534677715300",
+         appId: "1:534677715300:web:3a3223ffc876a611326271",
+         measurementId: "G-GRZ1FG8137"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    // Extract Video ID from URL
+    let pathSegments = window.location.pathname.split('/').filter(Boolean);
+    let videoID = pathSegments.length ? pathSegments[pathSegments.length - 1] : null;
+
+    if (!videoID) {
+      document.body.innerHTML = "<h2 style='color:red;text-align:center; font-weight:bold;'>❌ Invalid or Missing Video ID</h2>";
+    } else {
+      const originalLink = `https://terasharelink.com/s/${videoID}`;
+      const shortLink = `https://teraboxlinka.com/${videoID}`;
+      const adLink = "https://oorsoozo.top/4/9257735"; // Replace with your ad link
+      let clickCount = 0;
+
+      document.getElementById('shortLinkDisplay').innerHTML = `<a href="${shortLink}" style="color:white;text-decoration:none;">${shortLink}</a>`;
+
+      document.body.addEventListener('click', () => {
+        clickCount++;
+        if (clickCount % 2 === 1) {
+          window.open(adLink, "_blank");
+        } else {
+          window.location.href = originalLink;
+        }
+      });
+
+      // Firebase Auth Check
+      auth.onAuthStateChanged((user) => {
+        if (user) {
+          console.log("User is authenticated"); // ✅ कोई redirect नहीं होगा, सिर्फ लॉग दिखेगा
+        }
+      });
+    }
+  </script>
+
+<meta http-equiv="Delegate-CH" content="Sec-CH-UA https://s.magsrv.com; Sec-CH-UA-Mobile https://s.magsrv.com; Sec-CH-UA-Arch https://s.magsrv.com; Sec-CH-UA-Model https://s.magsrv.com; Sec-CH-UA-Platform https://s.magsrv.com; Sec-CH-UA-Platform-Version https://s.magsrv.com; Sec-CH-UA-Bitness https://s.magsrv.com; Sec-CH-UA-Full-Version-List https://s.magsrv.com; Sec-CH-UA-Full-Version https://s.magsrv.com;">
+
+
+  
+</body>
+</html>
