@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="6a97888e-site-verification" content="45225127a699e9af75bdd9aefc87094b">
+  <meta name="monetag" content="d6154854ebf8d588966672364cd8228f">
+  <title>Link Shortener | TeraboxLinke</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      background: #007bff;
+      padding: 10px 20px;
+      color: white;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    textarea {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #ff3c00;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #e63200;
+    }
+
+    .output {
+      margin-top: 20px;
+      font-size: 16px;
+    }
+
+    .short-link {
+      background: #f8f9fa;
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    .short-link a {
+      color: #007bff;
+      text-decoration: none;
+      word-break: break-word;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    Terabox Linke Shortener
+  </nav>
+
+  <div class="container">
+    <h1>🔗 Shorten Your Links Instantly</h1>
+    <p class="description">Paste your link below to generate a short link.</p>
+
+    <textarea id="originalLink" placeholder="Enter your link here..."></textarea>
+    <br />
+    <button onclick="shortLink()">Shorten Link</button>
+
+    <div class="output" id="shortenedLink"></div>
+  </div>
+
+  <!-- Firebase Setup with Modular SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCSPNBeymwFh_r1pozKcsqAZgtrkRBQGzg",
+      authDomain: "mix-setup.firebaseapp.com",
+      projectId: "mix-setup",
+      storageBucket: "mix-setup.firebasestorage.app",
+      messagingSenderId: "534677715300",
+      appId: "1:534677715300:web:3a3223ffc876a611326271",
+      measurementId: "G-GRZ1FG8137"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    window.shortLink = async function () {
+      const originalLink = document.getElementById("originalLink").value.trim();
+      const output = document.getElementById("shortenedLink");
+
+      output.innerHTML = ""; // Clear output
+
+      if (!originalLink) {
+        alert("❗ Please enter a link!");
+        return;
+      }
+
+      // Extract video ID
+      const match = originalLink.match(/\/s\/([a-zA-Z0-9]+)/);
+      if (!match) {
+        alert("❌ Invalid link! Use format: https://terasharelink.com/s/VIDEO_ID");
+        return;
+      }
+
+      const videoID = match[1];
+      const shortURL = `https://terasharelinka.com/${videoID}`;
+
+      try {
+        // Save to Firebase
+        await setDoc(doc(db, "links", videoID), {
+          original: originalLink,
+          short: shortURL,
+          createdAt: serverTimestamp()
+        });
+
+        // Show shortened link
+        output.innerHTML = `
+          <div class="short-link">
+            ✅ Shortened Link: <br/>
+            <a href="${shortURL}" target="_blank">${shortURL}</a>
+          </div>
+        `;
+      } catch (error) {
+        console.error("Error saving link:", error);
+        alert("❌ Error saving link. Check console.");
+      }
+    };
+  </script>
+
+</body>
+</html>
