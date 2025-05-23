@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/:linkid", "destination": "/page.html" }
+  ]
+}
