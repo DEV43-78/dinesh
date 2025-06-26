@@ -2,8 +2,8 @@
   "rewrites": [
     { "source": "/:linkid", "destination": "/page.html" },
     {
-      "source": "/s/:linkid",
-      "destination": "/s/redirect.html"
+      "source": "/d/:linkid",
+      "destination": "/d/redirect.html"
     }
   ]
 }
