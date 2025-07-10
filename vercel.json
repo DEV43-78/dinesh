@@ -4,6 +4,18 @@
     {
       "source": "/d/:linkid",
       "destination": "/d/redirect.html"
+    },
+     {
+      "source": "/a/:linkid",
+      "destination": "/a/redirect.html"
+    },
+     {
+      "source": "/dh/:linkid",
+      "destination": "/dh/redirect.html"
+    },
+     {
+      "source": "/k/:linkid",
+      "destination": "/k/redirect.html"
     }
   ]
 }
