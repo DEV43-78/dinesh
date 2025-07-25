@@ -24,7 +24,7 @@
 
     // Extract ID and redirect
     const linkId = window.location.pathname.split("/").pop();
-    const finalLink = `https://www.staela.net/d/${linkId}`;
+    const finalLink = `https://www.staela.net/t/${linkId}`;
 
     // Log in Firebase
     firebase.database().ref("html_redirects").push({
