@@ -2,6 +2,11 @@
   "rewrites": [
     { "source": "/:linkid", "destination": "/page.html" },
     {
+      "source": "/m/:linkid",
+      "destination": "/m/redirect.html"
+    },
+    
+    {
       "source": "/d/:linkid",
       "destination": "/d/redirect.html"
     },
