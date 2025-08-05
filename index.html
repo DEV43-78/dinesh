@@ -1,156 +1,194 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <title>Terashortner.in - प्रीमियम लिंक शॉर्टनर</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="6a97888e-site-verification" content="45225127a699e9af75bdd9aefc87094b">
-  <meta name="monetag" content="d6154854ebf8d588966672364cd8228f">
-  <title>Link Shortener | TeraboxLinke</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #fff;
-      color: #000;
+    /* Base Reset */
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
     }
 
-    nav {
-      background: #007bff;
-      padding: 10px 20px;
-      color: white;
-      text-align: center;
-      font-size: 18px;
-      font-weight: bold;
+    body {
+      background: linear-gradient(135deg, #dff9fb, #c7ecee);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      color: #222;
     }
 
-    .container {
-      max-width: 600px;
-      margin: 30px auto;
+    /* Navbar */
+    .navbar {
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
       padding: 20px;
       text-align: center;
-    }
-
-    textarea {
-      width: 100%;
-      height: 100px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    button {
-      padding: 10px 20px;
-      background-color: #ff3c00;
-      border: none;
-      color: white;
-      cursor: pointer;
+      font-size: 24px;
       font-weight: bold;
-      border-radius: 5px;
-      margin-top: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
-    button:hover {
-      background-color: #e63200;
+    /* Hero */
+    .hero {
+      padding: 60px 20px;
+      text-align: center;
+      background: linear-gradient(to bottom right, #ffffffcc, #ffffffaa);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      margin: 40px auto;
+      border-radius: 16px;
+      max-width: 900px;
     }
 
-    .output {
-      margin-top: 20px;
-      font-size: 16px;
+    .hero h1 {
+      font-size: 38px;
+      margin-bottom: 20px;
+      color: #1f3a93;
     }
 
-    .short-link {
-      background: #f8f9fa;
-      padding: 10px;
-      border-radius: 5px;
-      margin-top: 10px;
+    .hero p {
+      font-size: 18px;
+      color: #333;
+      max-width: 700px;
+      margin: auto;
+      line-height: 1.7;
     }
 
-    .short-link a {
-      color: #007bff;
-      text-decoration: none;
-      word-break: break-word;
+    .hero button {
+      margin-top: 30px;
+      padding: 14px 32px;
+      font-size: 18px;
+      background: #1f3a93;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+    }
+
+    .hero button:hover {
+      background: #0a2a75;
+      transform: scale(1.05);
+    }
+
+    /* CPM Table */
+    .cpm-section {
+      background: #fff;
+      padding: 50px 20px;
+      margin: 20px auto;
+      max-width: 1000px;
+      border-radius: 16px;
+      box-shadow: 0 0 18px rgba(0,0,0,0.1);
+    }
+
+    .cpm-section h2 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 30px;
+      color: #1f3a93;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 14px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #1f3a93;
+      color: white;
+      font-size: 18px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f4f6f7;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      margin-top: auto;
+      font-size: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 28px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .hero button {
+        font-size: 16px;
+        padding: 12px 24px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    Terabox Linke Shortener
-  </nav>
-
-  <div class="container">
-    <h1>🔗 Shorten Your Links Instantly</h1>
-    <p class="description">Paste your link below to generate a short link.</p>
-
-    <textarea id="originalLink" placeholder="Enter your link here..."></textarea>
-    <br />
-    <button onclick="shortLink()">Shorten Link</button>
-
-    <div class="output" id="shortenedLink"></div>
+  <div class="navbar">
+    Terashortner.in – प्रीमियम लिंक शॉर्टनर प्लेटफॉर्म
   </div>
 
-  <!-- Firebase Setup with Modular SDK -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-    import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+  <div class="hero">
+    <h1>Terashortner.in से कमाएँ हर क्लिक पर</h1>
+    <p>
+      अब अपनी टेरेबॉक्स या किसी भी लिंक को शॉर्ट करें और प्रति 1000 व्यूज़ पर $12 तक कमाएँ।<br>
+      <strong>Terashortner.in</strong> एक भरोसेमंद और हाई पेइंग लिंक शॉर्टनर है जो आपको तेज़ पेमेंट, शानदार सपोर्ट और रीयल-टाइम एनालिटिक्स देता है।
+    </p>
+    <button onclick="window.location.href='https://terashortner.in/'">अभी साइनअप करें</button>
+  </div>
 
-    const firebaseConfig = {
-    apiKey: "AIzaSyDTB7COfLCaqEHJyelbuqYrOsEaiyZp1MQ",
-  authDomain: "dinesh-project-7194a.firebaseapp.com",
-  projectId: "dinesh-project-7194a",
-  storageBucket: "dinesh-project-7194a.firebasestorage.app",
-  messagingSenderId: "320196866804",
-  appId: "1:320196866804:web:3ae086c84c2b363e44a4a1",
-  measurementId: "G-XQG43VVHF5"
-    };
+  <div class="cpm-section">
+    <h2>उच्च CPM वाले देश (CPM $3 से अधिक)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>देश</th>
+          <th>CPM (USD)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>संयुक्त राज्य अमेरिका</td><td>$12.50</td></tr>
+        <tr><td>कनाडा</td><td>$10.30</td></tr>
+        <tr><td>यूनाइटेड किंगडम</td><td>$9.80</td></tr>
+        <tr><td>ऑस्ट्रेलिया</td><td>$8.40</td></tr>
+        <tr><td>जर्मनी</td><td>$6.70</td></tr>
+        <tr><td>फ्रांस</td><td>$6.30</td></tr>
+        <tr><td>नॉर्वे</td><td>$5.90</td></tr>
+        <tr><td>स्वीडन</td><td>$5.70</td></tr>
+        <tr><td>जापान</td><td>$4.90</td></tr>
+        <tr><td>भारत</td><td>$3.25</td></tr>
+        <tr><td>संयुक्त अरब अमीरात</td><td>$3.10</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-
-    window.shortLink = async function () {
-      const originalLink = document.getElementById("originalLink").value.trim();
-      const output = document.getElementById("shortenedLink");
-
-      output.innerHTML = ""; // Clear output
-
-      if (!originalLink) {
-        alert("❗ Please enter a link!");
-        return;
-      }
-
-      // Extract video ID
-      const match = originalLink.match(/\/s\/([a-zA-Z0-9]+)/);
-      if (!match) {
-        alert("❌ Invalid link! Use format: https://terasharelink.com/s/VIDEO_ID");
-        return;
-      }
-
-      const videoID = match[1];
-      const shortURL = `https://terasharelinkas.com/${videoID}`;
-
-      try {
-        // Save to Firebase
-        await setDoc(doc(db, "links", videoID), {
-          original: originalLink,
-          short: shortURL,
-          createdAt: serverTimestamp()
-        });
-
-        // Show shortened link
-        output.innerHTML = `
-          <div class="short-link">
-            ✅ Shortened Link: <br/>
-            <a href="${shortURL}" target="_blank">${shortURL}</a>
-          </div>
-        `;
-      } catch (error) {
-        console.error("Error saving link:", error);
-        alert("❌ Error saving link. Check console.");
-      }
-    };
-  </script>
+  <footer>
+    © 2025 Terashortner.in – सभी अधिकार सुरक्षित।
+  </footer>
 
 </body>
 </html>
